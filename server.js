@@ -21,11 +21,9 @@ let sensorData = {
   combustivel_consumido: 0,
   velocidade: 0,
   rpm: 0,
-  lastTime: 0,
   temp_motor_array: [],
   temp_cvt_array: [],
   time_array: [],
-  bateria: 0
 };
 
 // Rota para receber dados do ESP32 via POST

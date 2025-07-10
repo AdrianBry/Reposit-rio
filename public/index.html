@@ -39,16 +39,11 @@
             </div>
         </div>
         <div class="grafico_cvt"><h2 class="texto_status">gráfico temperatura da cvt</h2><canvas id="graf-cvt"></canvas></div>
-        <div class="status_tanque"><h2 class="texto_status">Tanque de combustivel e Bateria</h2>
-            <div class="barra-comb-bateria">
+        <div class="status_tanque"><h2 class="texto_status">Tanque de combustivel</h2>
+            <div class="barra-comb">
                 <div class="bar-comb"><div class="comb-tip"></div>
                     <div class="progress-bar"><span id="comb_num">10</span><span class="symbol">%</span>
                         <div class="progress" id="progress"></div></div>
-                </div>
-                <div class="battery-wrapper">
-                    <div class="battery-tip"></div>
-                    <div class="battery-container"><span id="bateria_num">10</span><span class="symbol_bateria">⚡</span>
-                        <div class="battery-level" id="batteryLevel"></div></div>
                 </div>
             </div>
         </div>
@@ -66,7 +61,6 @@
             document.getElementById("rpm").innerHTML = data.rpm;
             document.getElementById("nmr-vel").innerHTML = data.velocidade;
             document.getElementById("comb_num").innerHTML = data.combustivel;
-            document.getElementById("bateria_num").innerHTML = data.bateria;
 
             chart.data.labels = [...data.time_array];
             chart.data.datasets[0].data = [...data.temp_motor_array];
@@ -77,7 +71,6 @@
             chart2.update();
 
             progress.style.height = `${data.combustivel}%`;
-            batteryLevel.style.height = `${data.bateria}%`;
 
             const arc = document.querySelector("svg path");
             const arc_length = arc.getTotalLength();
@@ -101,7 +94,6 @@
         });
 
         const progress = document.getElementById('progress');
-        const batteryLevel = document.getElementById('batteryLevel');
     </script>
 </body>
 </html>
