@@ -35,10 +35,16 @@ app.post('/update', (req, res) => {
 
   // Envia os dados atualizados para todos os clientes WebSocket conectados
   wss.clients.forEach(client => {
-    if (client.readyState === WebSocket.OPEN) {
-      client.send(JSON.stringify(sensorData));
-    }
-  });
+  if (client.readyState === WebSocket.OPEN) {
+    client.send(JSON.stringify({
+      ...sensorData,
+      temp_motor_array: sensorData.temp_motor_array || [],
+      temp_cvt_array: sensorData.temp_cvt_array || [],
+      time_array: sensorData.time_array || []
+    }));
+  }
+});
+
 
   res.sendStatus(200);
 });
